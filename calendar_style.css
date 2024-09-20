@@ -37,6 +37,9 @@
 .nav-item:hover {
     background-color: rgb(194, 194, 194);
     border-radius: 10%;
+    transform: scale(1.1); /* Aumenta o botão em 10% */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra suave */ 
+     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Import Google font - Poppins */
