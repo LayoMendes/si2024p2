@@ -50,6 +50,122 @@
         </ul>
     </div>
     <div class="flex-grow-1 d-flex flex-column content-box">
+     
+     
+     
+     
+     
+      <div class="chart-wrapper">
+        <div>
+            <h1 style="font-family: 'Dancing Script', cursive;">Gráfico de Linhas (Vendas, Custo e Lucro)</h1>
+            <div class="chart-container">
+                <div class="y-axis-labels">
+                    <span>R$ 4.000</span>
+                    <span>R$ 3.000</span>
+                    <span>R$ 2.000</span>
+                    <span>R$ 1.000</span>
+                    <span>R$ 0</span>
+                </div>
+                <canvas id="lineChart" width="600" height="400"></canvas>
+            </div>
+            <div class="x-axis-label">
+                <span>Semana 1</span>
+                <span>Semana 2</span>
+                <span>Semana 3</span>
+                <span>Semana 4</span>
+            </div>
+        </div>
+
+        <!-- Legenda -->
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color color-custo"></div>
+                <span>Custo</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color color-lucro"></div>
+                <span>Lucro</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color color-bruto"></div>
+                <span>Bruto</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('lineChart');
+        const ctx = canvas.getContext('2d');
+
+        // Dados do gráfico
+        const vendas = [2700, 2000, 2500, 2300];  // Dados brutos
+        const custo = [700, 200, 1000, 800];   // Dados do custo
+        const lucro = [1800, 1200, 1500, 2000];    // Dados do lucro
+
+        const yMax = 4000; // Máximo valor no eixo Y (R$ 4000)
+        const numLines = 4; // Quantidade de linhas (R$ 1000, R$ 2000, R$ 3000, R$ 4000)
+
+        // Desenha as linhas de fundo
+        function drawGridLines() {
+            for (let i = 1; i <= numLines; i++) {
+                const y = canvas.height - (i / numLines) * canvas.height;
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvas.width, y);
+                ctx.strokeStyle = '#ccc';
+                ctx.lineWidth = 9; // Linha mais fina
+                ctx.stroke();
+            }
+        }
+
+        // Função para desenhar a linha
+        function drawLine(data, color) {
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height - (data[0] / yMax * canvas.height)); // Começa na primeira semana
+
+            for (let i = 1; i < data.length; i++) {
+                const x = (i / (data.length - 1)) * canvas.width;  // Posição X
+                const y = canvas.height - (data[i] / yMax * canvas.height); // Posição Y
+                ctx.lineTo(x, y);
+            }
+
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        }
+
+        // Função para desenhar pontos e valores
+        function drawPoints(data, color) {
+            for (let i = 0; i < data.length; i++) {
+                const x = (i / (data.length - 1)) * canvas.width;
+                const y = canvas.height - (data[i] / yMax * canvas.height);
+                ctx.beginPath();
+                ctx.arc(x, y, 5, 0, Math.PI * 2, true); // Desenha um ponto
+                ctx.fillStyle = color;
+                ctx.fill();
+                // Desenha o valor acima do ponto
+                ctx.fillStyle = "black";
+                ctx.font = "12px Arial";
+                ctx.fillText(`R$ ${data[i]}`, x - 15, y - 10);
+            }
+        }
+
+        // Desenhar as linhas de fundo (grid)
+        drawGridLines();
+
+        // Desenhar a linha e os pontos com valores para custo, lucro e bruto
+        drawLine(custo, 'red');
+        drawPoints(custo, 'red');
+        drawLine(lucro, 'green'); // Lucro agora é verde
+        drawPoints(lucro, 'green');
+        drawLine(vendas, 'blue'); // Bruto agora é azul
+        drawPoints(vendas, 'blue');
+    
+    
+    
+    
+    
+    </script>
     </div>
 </body>
 </html>
