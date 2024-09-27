@@ -1,149 +1,171 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BeautyNote</title>
-    <link rel="icon" href="imgs/Butterfly-icon.png" type="image/gif">
-
     <link rel="stylesheet" href="styles.css" type="text/css">
     <script src="script.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-
-    <style>
-        /* Centralizando o conteúdo */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f4;
-            font-family: Arial, sans-serif;
-        }
-
-        .content-box {
-            text-align: center;
-        }
-
-        /* Estilo para o texto rotativo */
-        #rotatingText-adjective {
-            font-family: 'Dancing Script', cursive;
-            font-size: 40px;
-            font-weight: bold;
-            opacity: 1;
-            transition: opacity 1s ease-in-out;
-        }
-
-        /* Esconder e mostrar com transição suave */
-        .fade-out {
-            opacity: 0;
-        }
-    </style>
-
-
-
-
-
 </head>
-
 <body class="d-flex" style="height: 100vh;">
     <!-- Sidebar -->
     <div class="d-flex flex-column flex-shrink-0 bg-light vh-100" style="width: 4.5rem;">
-  <div class="icone"> <!--borboletinha batendo asinhas bem fofamente-->
-        <a href="index.html"
-            class="d-block p-3 link-dark text-decoration-none d-flex justify-content-center align-items-center" title=""
-            data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
-            <img src="imgs/Butterfly-icon.png" alt="" height="50px" width="50px" class="static-image">
+      <div class="icone"> <!--borboletinha batendo asinhas bem fofamente-->
+        <a href="index.html" class="d-block p-3 link-dark text-decoration-none d-flex justify-content-center align-items-center" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
+            <img src="imgs/Butterfly-icon.png" alt="" height="50px" width="50px"class="static-image">
             <img src="gif/download (2).gif" alt="GIF de hover" class="hover-gif">
             <span class="visually-hidden">Icon-only</span>
         </a>
-        
-    </div>    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-            <li class="nav-item"> 
-                <a href="index.html" class="nav-link active py-3 border-bottom" aria-current="page" title=""
-                    data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
-                    <i class="bi bi-house sidebar-icons"></i>
-                 
-                </a>
-            </li>
+      </div>
+        <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link py-3 border-bottom" aria-current="page" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+              <i class="bi bi-house sidebar-icons"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="calendar.html" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
+                <i class="bi bi-calendar sidebar-icons"></i>
+            </a>
+          </li>
             <li class="nav-item">
-                <a href="calendar.html" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip"
-                    data-bs-placement="right" data-bs-original-title="Dashboard">
-                    <i class="bi bi-calendar sidebar-icons"></i>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="cadastro_serviços.html" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip"
-                    data-bs-placement="right" data-bs-original-title="Orders">
-                    <i class="bi bi-clipboard2-plus sidebar-icons"></i>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="cadastro_clientes.html" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip"
-                    data-bs-placement="right" data-bs-original-title="Orders">
-                    <i class="bi bi-person-plus sidebar-icons"></i>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="financeiro.html" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip"
-                    data-bs-placement="right" data-bs-original-title="Orders">
-                    <i class="bi bi-graph-up sidebar-icons"></i>
-                </a>
-            </li>
-
+            <a href="cadastro_serviços.html" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+                <i class="bi bi-clipboard2-plus sidebar-icons"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="cadastro_clientes.html" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip"
+                data-bs-placement="right" data-bs-original-title="Orders">
+                <i class="bi bi-person-plus sidebar-icons"></i>
+            </a>
+        </li>
+          <li class="nav-item">
+            <a href="financeiro.html" class="nav-link active py-3 border-bottom" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+                <i class="bi bi-graph-up sidebar-icons"></i>
+            </a>
+          </li>
         </ul>
     </div>
-
     <div class="flex-grow-1 d-flex flex-column content-box">
-        <!-- Seção de texto rotativo -->
-        <section class="rotatingText flex-grow-1 d-flex justify-content-center align-items-center">
-            <div class="rotatingText-content">
-                <p class="rotatingText-description">Estética Danúbia Barros é&hellip;</p>
-                <h2 id="rotatingText-adjective">Beleza</h2>
+     
+     
+     
+     
+     
+      <div class="chart-wrapper">
+        <div>
+            <h1 style="font-family: 'Dancing Script', cursive;">Gráfico de Linhas (Vendas, Custo e Lucro)</h1>
+            <div class="chart-container">
+                <div class="y-axis-labels">
+                    <span>R$ 4.000</span>
+                    <span>R$ 3.000</span>
+                    <span>R$ 2.000</span>
+                    <span>R$ 1.000</span>
+                    <span>R$ 0</span>
+                </div>
+                <canvas id="lineChart" width="600" height="400"></canvas>
             </div>
-        </section>
+            <div class="x-axis-label">
+                <span>Semana 1</span>
+                <span>Semana 2</span>
+                <span>Semana 3</span>
+                <span>Semana 4</span>
+            </div>
+        </div>
 
-        <!-- Seção de novo conteúdo -->
-        <section class="new-content-section d-flex justify-content-center align-items-center">
-            <div class="content-box">
-              <table>
-              
-              <div class="boxx2">
-              <div class="boxx">
-                <h3>PRÓXIMO CLIENTE</h3>
-                <p>Roberta</p>
+        <!-- Legenda -->
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color color-custo"></div>
+                <span>Custo</span>
             </div>
+            <div class="legend-item">
+                <div class="legend-color color-lucro"></div>
+                <span>Lucro</span>
             </div>
-</table>
+            <div class="legend-item">
+                <div class="legend-color color-bruto"></div>
+                <span>Bruto</span>
             </div>
-        </section>
+        </div>
     </div>
 
     <script>
-        // Array com os adjetivos
-        const adjetivos = ["Beleza", "Harmonia", "Perfeição"];
-        let indiceAtual = 0;
+        const canvas = document.getElementById('lineChart');
+        const ctx = canvas.getContext('2d');
 
-        // Função para alternar os adjetivos
-        function trocarAdjetivo() {
-            const elemento = document.getElementById("rotatingText-adjective");
-            elemento.textContent = adjetivos[indiceAtual]; // Atualiza o texto
+        // Dados do gráfico
+        const vendas = [2700, 2000, 2500, 2300];  // Dados brutos
+        const custo = [700, 200, 1000, 800];   // Dados do custo
+        const lucro = [1800, 1200, 1500, 2000];    // Dados do lucro
 
-            // Atualiza o índice, reiniciando se for o último adjetivo
-            indiceAtual = (indiceAtual + 1) % adjetivos.length;
+        const yMax = 4000; // Máximo valor no eixo Y (R$ 4000)
+        const numLines = 4; // Quantidade de linhas (R$ 1000, R$ 2000, R$ 3000, R$ 4000)
+
+        // Desenha as linhas de fundo
+        function drawGridLines() {
+            for (let i = 1; i <= numLines; i++) {
+                const y = canvas.height - (i / numLines) * canvas.height;
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvas.width, y);
+                ctx.strokeStyle = '#ccc';
+                ctx.lineWidth = 9; // Linha mais fina
+                ctx.stroke();
+            }
         }
 
-        // Alterna o adjetivo a cada 2 segundos (2000ms)
-        setInterval(trocarAdjetivo, 999);
-    </script>
-</body>
+        // Função para desenhar a linha
+        function drawLine(data, color) {
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height - (data[0] / yMax * canvas.height)); // Começa na primeira semana
 
+            for (let i = 1; i < data.length; i++) {
+                const x = (i / (data.length - 1)) * canvas.width;  // Posição X
+                const y = canvas.height - (data[i] / yMax * canvas.height); // Posição Y
+                ctx.lineTo(x, y);
+            }
+
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        }
+
+        // Função para desenhar pontos e valores
+        function drawPoints(data, color) {
+            for (let i = 0; i < data.length; i++) {
+                const x = (i / (data.length - 1)) * canvas.width;
+                const y = canvas.height - (data[i] / yMax * canvas.height);
+                ctx.beginPath();
+                ctx.arc(x, y, 5, 0, Math.PI * 2, true); // Desenha um ponto
+                ctx.fillStyle = color;
+                ctx.fill();
+                // Desenha o valor acima do ponto
+                ctx.fillStyle = "black";
+                ctx.font = "12px Arial";
+                ctx.fillText(`R$ ${data[i]}`, x - 15, y - 10);
+            }
+        }
+
+        // Desenhar as linhas de fundo (grid)
+        drawGridLines();
+
+        // Desenhar a linha e os pontos com valores para custo, lucro e bruto
+        drawLine(custo, 'red');
+        drawPoints(custo, 'red');
+        drawLine(lucro, 'green'); // Lucro agora é verde
+        drawPoints(lucro, 'green');
+        drawLine(vendas, 'blue'); // Bruto agora é azul
+        drawPoints(vendas, 'blue');
+    
+    
+    
+    
+    
+    </script>
+    </div>
+</body>
 </html>
