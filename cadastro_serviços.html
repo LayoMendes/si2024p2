@@ -10,12 +10,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
-        /* Ajuste de botões para responsividade */
         .action-buttons {
             display: flex;
             flex-direction: column;
             gap: 10px;
             align-items: center;
+            color: #efcfd4;
         }
 
         @media (min-width: 768px) {
@@ -25,7 +25,6 @@
             }
         }
 
-        /* Cores e estilo da tabela */
         thead {
             background-color: #efcfd4;
             color: white;
@@ -45,7 +44,6 @@
             background-color: #f8d7da;
         }
 
-        /* Estilo das fontes do site */
         h1,
         button,
         th {
@@ -57,7 +55,16 @@
             font-size: 18px;
         }
 
-        /* Estilização do modal */
+        .btn-custom {
+            background-color: #efcfd4;
+            color: white;
+            font-size: 18px;
+        }
+
+        .btn-custom:hover {
+            background-color: #e0b3bb;
+        }
+
         .modal-header,
         .modal-footer {
             background-color: #efcfd4;
@@ -82,18 +89,6 @@
             font-size: 16px;
         }
 
-        /* Customização dos botões */
-        .btn-custom {
-            background-color: #efcfd4;
-            color: white;
-            font-size: 18px;
-        }
-
-        .btn-custom:hover {
-            background-color: #e0b3bb;
-        }
-
-        /* Estilo do alerta de desfazer */
         #undoAlert {
             position: fixed;
             bottom: 20px;
@@ -109,34 +104,34 @@
 <body class="d-flex" style="height: 100vh;">
     <!-- Sidebar -->
     <div class="d-flex flex-column flex-shrink-0 bg-light vh-100" style="width: 4.5rem;">
-        <a href="index.html" class="d-block p-3 link-dark text-decoration-none d-flex justify-content-center align-items-center" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
+        <a href="index.html"
+            class="d-block p-3 link-dark text-decoration-none d-flex justify-content-center align-items-center">
             <img src="imgs/Butterfly-icon.png" alt="Ícone" height="50px" width="50px">
         </a>
         <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
             <li class="nav-item">
-                <a href="index.html" class="nav-link py-3 border-bottom" title="Home" data-bs-toggle="tooltip">
+                <a href="index.html" class="nav-link py-3 border-bottom" title="Home">
                     <i class="bi bi-house sidebar-icons"></i>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="calendar.html" class="nav-link py-3 border-bottom" title="Calendar" data-bs-toggle="tooltip">
+                <a href="calendar.html" class="nav-link py-3 border-bottom" title="Calendar">
                     <i class="bi bi-calendar sidebar-icons"></i>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="cadastro_serviços.html" class="nav-link py-3 active border-bottom" title="Cadastro de Serviços" data-bs-toggle="tooltip"
-                data-bs-placement="right" data-bs-original-title="Orders">
+                <a href="cadastro_serviços.html" class="nav-link py-3 active border-bottom"
+                    title="Cadastro de Serviços">
                     <i class="bi bi-clipboard2-plus sidebar-icons"></i>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="cadastro_clientes.html" class="nav-link py-3 border-bottom" title="Cadastro de Clientes" data-bs-toggle="tooltip"
-                    data-bs-placement="right" data-bs-original-title="Orders">
+                <a href="cadastro_clientes.html" class="nav-link py-3 border-bottom" title="Cadastro de Clientes">
                     <i class="bi bi-person-plus sidebar-icons"></i>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="financeiro.html" class="nav-link py-3 border-bottom" title="Financeiro" data-bs-toggle="tooltip">
+                <a href="financeiro.html" class="nav-link py-3 border-bottom" title="Financeiro">
                     <i class="bi bi-graph-up sidebar-icons"></i>
                 </a>
             </li>
@@ -150,11 +145,13 @@
 
             <!-- Botões de Ação -->
             <div class="action-buttons text-center mb-4">
-                <button class="btn btn-lg btn-custom" id="editServiceBtn" disabled data-bs-toggle="modal" data-bs-target="#addServiceModal">Editar Serviço</button>
-                <button class="btn btn-lg btn-custom" id="deleteServiceBtn" disabled>Excluir Serviço</button>
-                <button class="btn btn-lg btn-custom" id="moveUpServiceBtn" disabled>Mover para Cima</button>
-                <button class="btn btn-lg btn-custom" id="moveDownServiceBtn" disabled>Mover para Baixo</button>
-                <button class="btn btn-lg btn-custom" data-bs-toggle="modal" data-bs-target="#addServiceModal">Adicionar Novo Serviço</button>
+                <button class="btn btn-lg btn-custom" data-bs-toggle="modal" data-bs-target="#addServiceModal">Adicionar
+                    Novo Serviço</button>
+                <button class="btn btn-custom" id="moveUpServiceBtn" disabled><i class="bi bi-arrow-up"></i></button>
+                <button class="btn btn-custom" id="moveDownServiceBtn" disabled><i
+                        class="bi bi-arrow-down"></i></button>
+                <button class="btn btn-custom" id="deleteServiceBtn" disabled><i class="bi bi-trash"></i></button>
+                <button class="btn btn-custom" id="refreshPageBtn"><i class="bi bi-arrow-clockwise"></i></button>
             </div>
 
             <!-- Tabela para exibir serviços cadastrados -->
@@ -174,9 +171,9 @@
             </div>
         </div>
     </div>
-
     <!-- Modal de Adição de Serviço -->
-    <div class="modal fade" id="addServiceModal" tabindex="-1" aria-labelledby="addServiceModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addServiceModal" tabindex="-1" aria-labelledby="addServiceModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -187,11 +184,13 @@
                     <form id="serviceForm">
                         <div class="mb-3">
                             <label for="serviceName" class="form-label">Nome do Serviço</label>
-                            <input type="text" class="form-control" id="serviceName" placeholder="Digite o nome do serviço" required>
+                            <input type="text" class="form-control" id="serviceName"
+                                placeholder="Digite o nome do serviço" required>
                         </div>
                         <div class="mb-3">
                             <label for="servicePrice" class="form-label">Valor do Serviço (R$)</label>
-                            <input type="number" class="form-control" id="servicePrice" placeholder="Digite o valor do serviço" required min="1" step="0.01">
+                            <input type="number" class="form-control" id="servicePrice"
+                                placeholder="Digite o valor do serviço" required min="1" step="0.01">
                         </div>
                         <div class="mb-3">
                             <label for="serviceCategory" class="form-label">Categoria</label>
@@ -215,156 +214,104 @@
         </div>
     </div>
 
-    <!-- Alerta de desfazer -->
-    <div id="undoAlert">
-        Serviço excluído. <button id="undoBtn" class="btn btn-sm btn-link">Desfazer</button>
-    </div>
+    <!-- Firebase and Firestore Setup -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
-    <script>
-        const servicesTable = document.getElementById('servicesTable');
+        const firebaseConfig = {
+            apiKey: "AIzaSyDxOeGrvBWBpVHtbOzzLbcGtcsMnJX_wkM",
+            authDomain: "beautynoteunipam.firebaseapp.com",
+            projectId: "beautynoteunipam",
+            storageBucket: "beautynoteunipam.appspot.com",
+            messagingSenderId: "214095703033",
+            appId: "1:214095703033:web:6001dfd40a5663b7766b28",
+            measurementId: "G-YK5P8P56DB"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const servicesCollection = collection(db, "services");
+
         let selectedRow = null;
-        let deletedRow = null;
-        let undoTimeout;
-        let isEditing = false;
-        let editIndex = null;
 
-        // Carregar serviços do Local Storage ao iniciar a página
-        window.addEventListener('load', loadServicesFromStorage);
+        async function saveService() {
+            const serviceName = document.getElementById("serviceName").value;
+            const servicePrice = document.getElementById("servicePrice").value;
+            const serviceCategory = document.getElementById("serviceCategory").value;
 
-        function loadServicesFromStorage() {
-            const services = JSON.parse(localStorage.getItem('services')) || [];
-            services.forEach((service) => {
-                const newRow = document.createElement('tr');
-                newRow.innerHTML = `<td>${service.name}</td><td>R$${parseFloat(service.price).toFixed(2)}</td><td>${service.category}</td>`;
-                servicesTable.appendChild(newRow);
-            });
-        }
-
-        function saveServicesToStorage() {
-            const services = [];
-            servicesTable.querySelectorAll('tr').forEach((row) => {
-                const cells = row.querySelectorAll('td');
-                services.push({
-                    name: cells[0].textContent,
-                    price: parseFloat(cells[1].textContent.replace('R$', '')),
-                    category: cells[2].textContent
+            try {
+                await addDoc(servicesCollection, {
+                    name: serviceName,
+                    price: parseFloat(servicePrice),
+                    category: serviceCategory
                 });
+                alert("Serviço adicionado com sucesso!");
+                document.getElementById("serviceForm").reset();
+                loadServices();
+            } catch (e) {
+                console.error("Erro ao adicionar serviço: ", e);
+            }
+        }
+
+        async function loadServices() {
+            const querySnapshot = await getDocs(servicesCollection);
+            const servicesTable = document.getElementById("servicesTable");
+            servicesTable.innerHTML = ""; // Limpa a tabela
+
+            querySnapshot.forEach((doc) => {
+                const service = doc.data();
+                const row = document.createElement("tr");
+                row.innerHTML = `<td>${service.name}</td><td>R$${service.price.toFixed(2)}</td><td>${service.category}</td>`;
+                row.addEventListener("click", () => selectRow(row, doc.id));
+                servicesTable.appendChild(row);
             });
-            localStorage.setItem('services', JSON.stringify(services));
         }
 
-        // Seleção de serviço
-        servicesTable.addEventListener('click', function (event) {
-            if (event.target.tagName === 'TD') {
-                const row = event.target.parentNode;
-                if (selectedRow) {
-                    selectedRow.classList.remove('selected');
-                }
-                selectedRow = row;
-                selectedRow.classList.add('selected');
-                enableActionButtons();
-            }
-        });
-
-        function enableActionButtons() {
-            document.getElementById('editServiceBtn').disabled = false;
-            document.getElementById('deleteServiceBtn').disabled = false;
-            document.getElementById('moveUpServiceBtn').disabled = false;
-            document.getElementById('moveDownServiceBtn').disabled = false;
+        function selectRow(row, docId) {
+            if (selectedRow) selectedRow.classList.remove("selected");
+            selectedRow = row;
+            selectedRow.classList.add("selected");
+            document.getElementById("deleteServiceBtn").disabled = false;
+            document.getElementById("moveUpServiceBtn").disabled = false;
+            document.getElementById("moveDownServiceBtn").disabled = false;
+            selectedRow.dataset.id = docId;
         }
 
-        // Preencher modal de edição
-        document.getElementById('editServiceBtn').addEventListener('click', function () {
+        async function deleteSelectedService() {
             if (selectedRow) {
-                const cells = selectedRow.getElementsByTagName('td');
-                document.getElementById('serviceName').value = cells[0].textContent;
-                document.getElementById('servicePrice').value = parseFloat(cells[1].textContent.replace('R$', ''));
-                document.getElementById('serviceCategory').value = cells[2].textContent;
-                isEditing = true;
-                editIndex = Array.from(servicesTable.rows).indexOf(selectedRow);
+                const docId = selectedRow.dataset.id;
+                await deleteDoc(doc(db, "services", docId));
+                alert("Serviço excluído!");
+                loadServices();
             }
-        });
+        }
 
-        // Adicionar ou editar serviço
-        document.getElementById('saveServiceBtn').addEventListener('click', function () {
-            const name = document.getElementById('serviceName').value;
-            const price = document.getElementById('servicePrice').value;
-            const category = document.getElementById('serviceCategory').value;
-
-            if (isEditing && selectedRow) {
-                const cells = selectedRow.getElementsByTagName('td');
-                cells[0].textContent = name;
-                cells[1].textContent = `R$${parseFloat(price).toFixed(2)}`;
-                cells[2].textContent = category;
-                isEditing = false;
-                editIndex = null;
-            } else {
-                const newRow = document.createElement('tr');
-                newRow.innerHTML = `<td>${name}</td><td>R$${parseFloat(price).toFixed(2)}</td><td>${category}</td>`;
-                servicesTable.appendChild(newRow);
+        function moveRowUp() {
+            if (selectedRow && selectedRow.previousElementSibling) {
+                selectedRow.parentNode.insertBefore(selectedRow, selectedRow.previousElementSibling);
             }
+        }
 
-            saveServicesToStorage();
-            
-            document.getElementById('serviceForm').reset();
+        function moveRowDown() {
+            if (selectedRow && selectedRow.nextElementSibling) {
+                selectedRow.parentNode.insertBefore(selectedRow.nextElementSibling, selectedRow);
+            }
+        }
+
+        document.getElementById("saveServiceBtn").addEventListener("click", () => {
+            saveService();
             const modal = document.querySelector('#addServiceModal');
             const modalInstance = bootstrap.Modal.getInstance(modal);
             modalInstance.hide();
         });
 
-        // Excluir serviço
-        document.getElementById('deleteServiceBtn').addEventListener('click', function () {
-            if (selectedRow) {
-                deletedRow = selectedRow;
-                selectedRow.remove();
-                saveServicesToStorage();
-                showUndoAlert();
-                selectedRow = null;
-                disableActionButtons();
-            }
-        });
+        document.getElementById("deleteServiceBtn").addEventListener("click", deleteSelectedService);
+        document.getElementById("moveUpServiceBtn").addEventListener("click", moveRowUp);
+        document.getElementById("moveDownServiceBtn").addEventListener("click", moveRowDown);
+        document.getElementById("refreshPageBtn").addEventListener("click", () => location.reload());
 
-        function showUndoAlert() {
-            const undoAlert = document.getElementById('undoAlert');
-            undoAlert.style.display = 'block';
-            clearTimeout(undoTimeout);
-            undoTimeout = setTimeout(function () {
-                undoAlert.style.display = 'none';
-                deletedRow = null;
-            }, 10000); 
-        }
-
-        document.getElementById('undoBtn').addEventListener('click', function () {
-            if (deletedRow) {
-                servicesTable.appendChild(deletedRow);
-                saveServicesToStorage();
-                deletedRow = null;
-                document.getElementById('undoAlert').style.display = 'none';
-            }
-        });
-
-        // Mover serviço para cima
-        document.getElementById('moveUpServiceBtn').addEventListener('click', function () {
-            if (selectedRow && selectedRow.previousElementSibling) {
-                servicesTable.insertBefore(selectedRow, selectedRow.previousElementSibling);
-                saveServicesToStorage();
-            }
-        });
-
-        // Mover serviço para baixo
-        document.getElementById('moveDownServiceBtn').addEventListener('click', function () {
-            if (selectedRow && selectedRow.nextElementSibling) {
-                servicesTable.insertBefore(selectedRow.nextElementSibling, selectedRow);
-                saveServicesToStorage();
-            }
-        });
-
-        function disableActionButtons() {
-            document.getElementById('editServiceBtn').disabled = true;
-            document.getElementById('deleteServiceBtn').disabled = true;
-            document.getElementById('moveUpServiceBtn').disabled = true;
-            document.getElementById('moveDownServiceBtn').disabled = true;
-        }
+        window.addEventListener("load", loadServices);
     </script>
 </body>
 
