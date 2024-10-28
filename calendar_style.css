@@ -26,9 +26,16 @@
 }
 
 .nav-link.active {
-    background-color: var(--cor-principal) !important;
-    color: white !important;
+  
+    background-color: #efcfd4 !important; 
+    color: white !important; 
+    transform: scale(1.1); /* Aumenta o botão em 10% */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra suave */ 
+     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+
+
 
 .content-box {
     background-color: #f1f1f1 !important;
