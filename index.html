@@ -118,33 +118,65 @@
               
               <div class="boxx2">
                 <div class="boxx">
-                    <h3>PRÓXIMO CLIENTE</h3>
-                    <p id="nomeCliente">Roberta</p> <!-- Esse "Roberta" será substituído pelo nome do primeiro cliente -->
+                    <div class="boxx2">
+                        <h3>VALOR TOTAL DOS SERVIÇOS</h3>
+                        <p id="totalValue">Carregando...</p> <!-- O nome do serviço será exibido aqui -->
+                        
+                    </div>
+                  
                 </div>
+                
                 
             </div>
 </table>
             </div>
         </section>
     </div>
-
-    <script>
-        // Array com os adjetivos
-        const adjetivos = ["Beleza", "Harmonia", "Perfeição"];
-        let indiceAtual = 0;
-
-        // Função para alternar os adjetivos
-        function trocarAdjetivo() {
-            const elemento = document.getElementById("rotatingText-adjective");
-            elemento.textContent = adjetivos[indiceAtual]; // Atualiza o texto
-
-            // Atualiza o índice, reiniciando se for o último adjetivo
-            indiceAtual = (indiceAtual + 1) % adjetivos.length;
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+    
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const servicesCollection = collection(db, "services");
+    
+        function atualizarTotalServicos() {
+            console.log("Iniciando a função para calcular o total...");
+            
+            // Verifica se a coleção está sendo acessada
+            onSnapshot(servicesCollection, (snapshot) => {
+                if (snapshot.empty) {
+                    console.warn("A coleção 'services' está vazia ou não acessível.");
+                }
+                
+                let total = 0;
+                snapshot.forEach((doc) => {
+                    const service = doc.data();
+                    console.log("Documento ID:", doc.id, "Dados:", service); // Log dos dados de cada documento
+                    if (typeof service.price === "number") { // Verifica se price é um número
+                        total += service.price;
+                    } else {
+                        console.warn(`Campo 'price' ausente ou não é número no documento: ${doc.id}`);
+                    }
+                });
+                console.log("Total calculado:", total); // Log do total calculado
+                document.getElementById("totalValue").textContent = `R$ ${total.toFixed(2)}`;
+            });
         }
-
-        // Alterna o adjetivo a cada 2 segundos (2000ms)
-        setInterval(trocarAdjetivo, 999);
+    
+        atualizarTotalServicos();
     </script>
+    
+    
 </body>
 
 </html>
